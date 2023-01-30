@@ -21,6 +21,15 @@
                 <input type="hidden" name="post_id" value="<?php echo $select_posts['id']; ?>">
                 <input type="hidden" name="_token" value="<?php echo $this->escape($_token); ?>" />
 
+                <!-- 投稿ステータス -->
+                <div class="form-group">
+                  <label for="status">投稿ステータス <span class="badge badge-danger">必須</span></label>
+                  <select name="status" class="form-control" id="status">
+                    <option value="active" <?= $select_posts['status'] == 'active' ? 'selected' : ''; ?>>公開</option>
+                    <option value="deactive" <?= $select_posts['status'] == 'active' ? '' : 'selected'; ?>>非公開</option>
+                  </select>
+                </div>
+
                 <!-- 投稿タイトル -->
                 <div class="form-group">
                   <label for="title">投稿タイトル <span class="badge badge-danger"> 必須</span></label>

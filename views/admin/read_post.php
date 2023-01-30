@@ -1,5 +1,53 @@
-<?php $this->setLayoutVar('title', 'ユーザーを見る') ?>
+<?php $this->setLayoutVar('title', '投稿を見る') ?>
 <?php $this->setLayoutVar('errors', $errors) ?>
+<?php $this->setLayoutVar('admin', $admin) ?>　
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <?php if (count($view_posts) > 0) : ?>
+              <?php
+              foreach ($view_posts as $post_data) {
+                $post_id = $post_data['post_id'];
+              ?>
+                <form method="post">
+
+                  <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+
+                  <!-- 投稿ステータス -->
+                  <div class="form-group">
+                    <label for="status">投稿ステータス <span class="badge badge-danger">必須</span></label>
+                    <select name="status" class="form-control" id="status">
+                      <option value="active" <?= $select_posts['status'] == 'active' ? 'selected' : ''; ?>>公開</option>
+                      <option value="deactive" <?= $select_posts['status'] == 'active' ? '' : 'selected'; ?>>非公開</option>
+                    </select>
+                  </div>
+
+                  <!-- 投稿タイトル -->
+                  <div class="form-group">
+                    <label for="title">投稿タイトル <span class="badge badge-danger"> 必須</span></label>
+                    <input type="text" class="form-control" id="title" name="title" maxlength="100" require value="<?= $select_posts['title']; ?>" placeholder="投稿タイトルを入力してください。">
+                  </div>
+
+                </form>
+              <?php
+                next($view_posts);
+              }
+              ?>
+            <?php else : ?>
+              <div class="mt-3">
+                <p class="fs-2 text-center">まだ投稿はありません。</p>
+              </div>
+            <?php endif; ?>
+          </div>
+        </div><!-- card -->
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container-fluid -->
+</div><!-- content -->
 
 <section class="read-post">
   <?php
