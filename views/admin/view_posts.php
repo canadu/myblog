@@ -19,19 +19,22 @@
               ?>
 
                 <div class="col-md-4">
+
                   <div class="card">
-                    <?php if ($fetch_post['image'] != '') : ?>
-                      <img src="../../uploaded_img/<?php echo $fetch_post['image']; ?>" class="card-img-top" alt="<?= $fetch_post['title']; ?>の画像">
-                    <?php endif; ?>
+
                     <div class="card-header">
                       <?php if ($fetch_post['status'] == 'active') : ?>
-                        <span class="badge badge-danger mb-2">公開</span>
+                        <h6><span class="badge badge-danger mb-1">公開</span></h6>
                         <h5><?= $fetch_post['title']; ?></h5>
                       <?php else : ?>
-                        <span class="badge badge-secondary mb-2">非公開</span>
+                        <h6><span class="badge badge-secondary mb-1">非公開</span></h6>
                         <h5><?= $fetch_post['title']; ?></h5>
                       <?php endif; ?>
                     </div>
+
+                    <?php if ($fetch_post['image'] != '') : ?>
+                      <img src="../../uploaded_img/<?php echo $fetch_post['image']; ?>" class="card-img-top" alt="<?= $fetch_post['title']; ?>の画像">
+                    <?php endif; ?>
 
                     <div class="card-body">
                       <form method="POST">
